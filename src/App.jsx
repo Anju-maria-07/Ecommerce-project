@@ -1,4 +1,4 @@
-import {HomePage} from './pages/HomePage';
+import {HomePage} from './pages/Home/HomePage';
 import {Routes, Route} from 'react-router';
 import {CheckoutPage} from './pages/CheckoutPage';
 import {OrdersPage} from './pages/OrdersPage'
