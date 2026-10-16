@@ -6,9 +6,10 @@ import {useState} from 'react';
 export function Product({product, loadCart}) {
     const [quantity,setQuantity]=useState(1);
     const addToCart = async () => {
+           console.log('selected quantity:', quantity);
                     await axios.post('/api/cart-items', {
                         productId: product.id,
-                        quantity
+                        quantity:quantity
                     });
                     await loadCart();
                 }
