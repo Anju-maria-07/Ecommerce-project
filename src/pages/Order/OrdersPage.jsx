@@ -9,10 +9,10 @@ import { OrderDetailGrid } from './OrderDetailGrid.jsx';
 export function OrdersPage({ cart }) {
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        const fetchOrderData = async()=>{
-               const response= await axios.get('/api/orders?expand=products')
+        const fetchOrderData = async () => {
+            const response = await axios.get('/api/orders?expand=products')
 
-                setOrders(response.data)
+            setOrders(response.data)
         }
         fetchOrderData()
     }, [])
@@ -47,7 +47,7 @@ export function OrdersPage({ cart }) {
                                     </div>
                                 </div>
 
-                              <OrderDetailGrid order={order} />
+                                <OrderDetailGrid order={order} />
 
                             </div>
                         )
