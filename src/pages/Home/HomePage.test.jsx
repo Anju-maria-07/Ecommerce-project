@@ -1,5 +1,5 @@
 import {it,expect,describe,vi,beforeEach} from 'vitest';
-import {render,screen} from '@testing-library/react';
+import {render,screen,within} from '@testing-library/react';
 import {HomePage} from './HomePage';
 import axios from 'axios';
 import {MemoryRouter} from 'react-router';
@@ -39,11 +39,22 @@ describe('HomePage con=mponent',()=>{
     })
    })
 
-  it('displays the products correctly',()=>{
+  it('displays the products correctly',async()=>{
     render(
         <MemoryRouter >
         <HomePage cart={[]} loadCart={loadCart} />
         </MemoryRouter>
-    )
+    );
+   const productContainers= await screen.findAllByTestId('product-container');
+    expect (productContainers.length).toBe(2);
+
+    expect(
+        within(productContainers[0])
+        .getByText('Black and Gray Athletic Cotton Socks - 6 Pairs')
+    ).toBeInTheDocument();
+    expect(
+        within(productContainers[1])
+        .getByText('Intermediate Size Basketball')
+    ).toBeInTheDocument();
   })  
 })
